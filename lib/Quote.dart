@@ -1,5 +1,5 @@
-class Qoute{
+class Quote{
   String? text;
   String? author;
-  Qoute({this.author,this.text});
+  Quote({this.author,this.text});
 }
