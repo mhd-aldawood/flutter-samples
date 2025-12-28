@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:ninja_id/services/world_time.dart';
-
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 class Loading extends StatefulWidget {
   const Loading({super.key});
 
@@ -59,13 +59,12 @@ class _LoadingState extends State<Loading> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.blue[900],
       body: Center(
-        child: time == null
-            ? CircularProgressIndicator()
-            : Text(
-          time!,
-          style: TextStyle(fontSize: 32, color: Colors.black),
-        ),
+         child:  SpinKitRotatingCircle(
+            color: Colors.white,
+            size: 50.0,
+          )
       ),
     );
   }
