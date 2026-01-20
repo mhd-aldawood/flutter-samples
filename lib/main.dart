@@ -1,96 +1,34 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-
+import 'package:get/get.dart';
+import 'package:my_app/app/routes/app_pages.dart';
+import 'package:my_app/core/initial_binding.dart';
 void main() {
-  runApp(MaterialApp(home: NinjaCard()));
+  runApp(const MyApp());
 }
 
-class NinjaCard extends StatefulWidget {
-  const NinjaCard({super.key});
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
 
-  @override
-  State<NinjaCard> createState() => _NinjaCardState();
-}
-
-class _NinjaCardState extends State<NinjaCard> {
-  int ninjaLevel=0;
+  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.grey[900],
-      appBar: AppBar(
-        title: Text("AppBar"),
-        centerTitle: true,
-        backgroundColor: Colors.white10,
-        elevation: 0,
+    return GetMaterialApp(
+      // Define initial route
+      title: 'GetX Tutorial App',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
       ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: (){
-            setState(() {
-              ninjaLevel++;
-            });
-          }
-          ,child: Icon(Icons.add),
-        backgroundColor: Colors.amberAccent[200],),
-
-      body: Padding(
-        padding: EdgeInsetsGeometry.fromLTRB(30, 40, 30, 0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Center(
-              child: CircleAvatar(
-                backgroundImage: AssetImage('asset/chunli.jpg'),
-                radius: 40,
-              ),
-            ),
-            Divider(height: 60,color: Colors.grey[800],),
-            Text(
-              "Name",
-              style: TextStyle(color: Colors.grey, letterSpacing: 2),
-            ),
-            SizedBox(height: 10),
-            Text(
-              "Chun-Li",
-              style: TextStyle(
-                color: Colors.amberAccent[200],
-                fontSize: 28,
-                fontWeight: FontWeight.bold,
-                letterSpacing: 2,
-              ),
-            ),
-            SizedBox(height: 30),
-            Text(
-              "Current Ninja Level",
-              style: TextStyle(color: Colors.grey, letterSpacing: 2),
-            ),
-            SizedBox(height: 10),
-            Text(
-              "$ninjaLevel",
-              style: TextStyle(
-                color: Colors.amberAccent[200],
-                letterSpacing: 2,
-              ),
-            ),
-            SizedBox(height: 30),
-            Row(
-              children: [
-                Icon(Icons.email, color: Colors.grey[400]),
-                SizedBox(width: 10),
-                Text(
-                  "ChunLi@gmail.com",
-                  style: TextStyle(
-                    color: Colors.grey[400],
-                    fontSize: 18,
-                    letterSpacing: 1,
-                  ),
-                ),
-              ],
-            ),
-          ],
-        ),
-      ),
+      initialRoute: '/home',
+      // Configure route management
+      getPages: AppPages.routes,
+      // Set up dependency injection
+      // initialBinding: InitialBinding(),
+      // Configure logging for different environments
+      enableLog: kDebugMode,
+      // Set default transition
+      defaultTransition: Transition.cupertino,
+      transitionDuration: Duration(milliseconds: 250),
     );
   }
 }
-
-

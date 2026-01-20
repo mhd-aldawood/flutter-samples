@@ -1,6 +1,6 @@
 {
-    "name": "ninja_id",
-    "short_name": "ninja_id",
+    "name": "my_app",
+    "short_name": "my_app",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
